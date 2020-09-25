@@ -39,14 +39,19 @@ SortNumbers
     INITIALIZE counter;
     INITIALIZE orderedList;
 
-
+    STEP 1:
     PROMPT "Please input minimum 2 digits and maximum 10 digits (0-9), separated by commas" AS userInput
+    
+    STEP 2:
     SPLIT userInput AT THE SEPERATOR "," TO digitsList
-    // check for spaces, are there commas in the string
-    FOR EACH item OF digitsList
-        IF not a digit OR IF larger than 9 OR IF smaller than 0
+
+    STEP 3:
+    FOR EACH digitsList
+        IF not a digit OR larger than 9 OR IF smaller than 0
             PROMPT ("Please make sure that you only add single digits (0-9)");
-    END FOR EACH
+    END FOR EACH digitList
+
+    STEP4:
     FOR EACH digitListItem OF digitsList
         IF orderedList is empty
             move digitListItem to orderedList
@@ -57,6 +62,8 @@ SortNumbers
                     BREAK
             END FOR EACH
     END FOR EACH
+    
+    STEP5:
     FOR EACH orderedItem of orderedList
         PRINT orderedItem
     END FOR EACH
