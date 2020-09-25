@@ -1,83 +1,92 @@
 /*
-    Exercise 4
-    Validate a telephone number, as if written on an input form. Telephone numbers 
-    can be written as ten digits, or with dashes, spaces, or 
-    dots between the three segments, or with the area code parenthesized; 
-    both the area code and any white space between segments are optional.
-*/
+Exercise 4
+Validate a telephone number, as if written on an input form. Telephone numbers 
+can be written as ten digits, or with dashes, spaces, or 
+dots between the three segments, or with the area code parenthesized; 
+both the area code and any white space between segments are optional.*/
 
 /*
-Test input:
-=============
-True:
-1234567890
-123 456 7890
-123-456-7890
-123.456.7890
-(0041)1234567890
-(+41)123 456 7890
-(0041)123-456-7890
-(+41)123.456.7890
-123 456       7890
 
-False:
-(123)456-7890
-(123) 456-7890
-123456789#
-123 456 78 90
+Inputs      : telephone number
+Processes   : validate the format of the phone number
+Outputs     : true or false
 
-To clarify: Customer said false (In our group, we picked one one of as as a customer and asked him.)
-1-2-3-4-5-6-7-8-9-0 said false
-12.3456.7890 said false
-1234567890(0041) said false 
-(1111111111111)1234567890 said false
-==============
+Possible phone numbers
+=========================
+10 digits,   e.g. 0797899236
+With dashes, e.g. 079-879-9236
+With spaces, e.g. 079 879 9236
+With dots,   e.g. 079.879.9236
+With area code parenthesized, e.g. (079) 879 9236
+
+Test Cases
+==========
+input           : 0797899236
+Expected Result : True
+Actual Result   : True
+
+input           : 079 879-9236
+Expected Result : False
+Actual Result   : False
+
+input           : 079 879.9236
+Expected Result : False
+Actual Result   : False
+
+input           : 079-879.9236
+Expected Result : False
+Actual Result   : False
+
+input           : 079.879-9236
+Expected Result : False
+Actual Result   : False
 
 
 
 ValidateTelephoneNumber
 
-    INITIALIZE userInput
-    INITIALIZE charList as a holder of allwed charachters "(", ")", ".", "-", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+".
+    INITIALIZE givenNumber
+    INITIALIZE charList as a holder of allwed charachters "(", ")", ".", "-", " ", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0".
     INITIALIZE charMap as a map that keeps track of how many times allowed character has been used.
     INITIALIZE totalDigitCount as a holder of number of digits.
     INITIALIZE isValid as true;
 
+    STEP 1:
     Check every digit if it is valid (in the charList or not) or not. 
-    FOR EACH userInput 
+    FOR EACH givenNumber 
         FOR EACH charList
-            IF item of userInput does not exist in charList
-                isValid = false
-                PROMPT  "You can only use these chars" + print charList
+            IF item of givenNumber does not exist in charList
+                 DISPLAY false
+                 break
         END FOR EACH charList
-    END FOR EACH userInput
+    END FOR EACH givenNumber
 
-    IF userInput does not start with digit or opening paranthes
-        PROMPT  "Number can only start with digit or paranthesis"
-    IF userInput does start with opening paranthes and does not have closing paranthes
-        PROMPT  "Number can have area code only between paranthesis"
-    IF userInput has opening and closing paranthesis
-        SPLIT userInput at ")" 
-        userInput = userInput[1]
-    IF userInput has "+" char 
-        PROMPT  "You can use "+" only in are code.
+    STEP 2:
+    IF givenNumber does not start with digit or opening paranthes
+        DISPLAY false
+    IF givenNumber does start with opening paranthes and does not have closing paranthes
+        DISPLAY false
+    IF givenNumber starts with number and have closing paranthes
+        DISPLAY false
     
-    
-    Calculating how many digit doeas userInput have?
-    FOR EACH userInput 
+    STEP3 3:
+    Calculating how many digits does the number have.
+    FOR EACH givenNumber 
         IF item is number
             totalDigitCount++;
-    END FOR EACH userInput
+    END FOR EACH givenNumber
 
+    STEP 4:
     IF totalDigitCount is not 10
-        PROMPT  "Number can have only 10 digits."
+        PRINT  DISPLAY false
     
-    FOR EACH charList which charecter how many times repeats in the userInput and save the info in charMap.
+    STEP 5:
+    FOR EACH charList which charecter how many times repeats in the givenNumber and save the info in charMap.
         INITIALIZE count
-        FOR EACH userInput 
-            IF item of userInput is not a number
+        FOR EACH givenNumber 
+            IF item of givenNumber is not a number
                 count++;
-        END FOR EACH userInput
+        END FOR EACH givenNumber
         IF count is not a zero
             add the key-value pair as (char, count)
     END FOR EACH charList
@@ -88,9 +97,9 @@ ValidateTelephoneNumber
                 OR key of "." exists AND its value is 2 AND key of "-" is not exist AND key of " " is not exist
                 OR key of " " exists AND its value is 2 AND key of "-" is not exist AND key of "." is not exist
                 OR key of "." does not exists AND key of "-" is not exist AND key of " " is not exist
-                    print "This is a phone number: " + userInput
+                    DISPLAY true
         ELSE
-            print "This is not a phone number" + userInput
+            DISPLAY false
 
 END ValidateTelephoneNumber
 
