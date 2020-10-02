@@ -18,8 +18,8 @@ outputs : String Input, and Number of Chars
 Test Cases
 ==========
 input           : Abcde
-Expected Result : Abcde 5
-Actual Result   : Abcde 5
+Expected Result : Abcde, 5
+Actual Result   : Abcde, 5
 
 input           : 
 Expected Result :  , 0
@@ -37,27 +37,15 @@ CountingNumberOfChars
     INITIALIZE counter as 0
 
     STEP 1:
-    PROMPT stringInput with "What is your name?"
+    PROMPT stringInput with "Enter anything you want.?"
     
     STEP 2:
-    counter = length of the stringInput
+    FOR EACH stringInput
+        counter = counter + 1;
+    END FOR EACH
 
     STEP 3:
-    DISPLAY stringInput + " " + counter
+    DISPLAY stringInput + ", " + counter
 
 END CountingNumberOfChars
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
