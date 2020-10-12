@@ -38,6 +38,7 @@ var futureYear = takeAValidInputFromUser(
   validYears
 );
 
+// to validate future year to be greater than birth year.
 if (birthYear >= futureYear) {
   futureYear = takeAValidInputFromUser(
     "Please enter a year on the future:\n (please enter YYYY format and between 1900 and 2099)",
@@ -52,18 +53,23 @@ var futureMonth = takeAValidInputFromUser(
 
 printTheAge(birthYear, birthMonth, futureYear, futureMonth);
 
+//to ask the same question to user to take desired input.
 function takeAValidInputFromUser(message, regEx) {
-  var anInput = prompt(message);
-  while (typeof anInput === "undefined" || !regEx.test(anInput)) {
+  var anInput = prompt(message, "");
+  while (anInput === "" || !regEx.test(anInput)) {
+    //Info: When the user click esc key or cancel button, they return a null input.
+    if (input === null) break;
     anInput = prompt(message);
   }
   return Number.parseInt(anInput);
 }
 
+//To show human readible text to users.
 function monthNumToName(monthnum) {
   return months[monthnum - 1] || "";
 }
 
+//To print the final result to users.
 function printTheAge(birthYear, birthMonth, futureYear, futureMonth) {
   var age = 0;
   var ay = monthNumToName(futureMonth);

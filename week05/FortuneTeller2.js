@@ -13,18 +13,20 @@ function tellFortune(numberOfChildren, nameOfPartner, location, titleOfJob) {
   };
 }
 
-var fortune1 = new tellFortune(2, "Meliha", "Bern", "Full-stack Web Developer");
+var fortune1 = new tellFortune(2, "Askim", "Bern", "Full-stack Web Developer");
 fortune1.print();
+
 var fortune2 = new tellFortune(
   3,
-  "Meliha",
+  "Askim",
   "Zürich",
   "Full-stack Web Developer"
 );
 fortune2.print();
+
 var fortune3 = new tellFortune(
   2,
-  "Meliha",
+  "Askim",
   "Boston",
   "Full-stack Web Developer"
 );

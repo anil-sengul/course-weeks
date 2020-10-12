@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Store</title>
+    <style>
+      * {
+        /* box-sizing: border-box;
+        border: 1px solid black; */
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      ul {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 0 150px;
+        justify-content: flex-start;
+      }
+
+      span {
+        max-width: 150px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      li {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        margin: 2%;
+      }
+
+      img {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MY Book List</h1>
+    <main></main>
+    <script>
+      var books = [
+        {
+          title: "Scrum: The Art of Doing Twice the Work in Half the Time",
+          author: "J.J. Sutherlandn",
+          alreadyRead: true,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/51A1BpQ2HjL._SX327_BO1,204,203,200_.jpg",
+        },
+        {
+          title: "The Most Human Human",
+          author: "Brian Christian",
+          alreadyRead: true,
+          source:
+            "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1295465264l/8884400.jpg",
+        },
+        {
+          title: "The Design of EveryDay Things",
+          author: "Don Norman",
+          alreadyRead: false,
+          source:
+            "https://assets.thalia.media/img/artikel/c68ae030738edc1e3c1ffc0d0e8d07ef4ccad6b1-00-00.jpeg",
+        },
+        {
+          title: "The ONE Thing",
+          author: " Gary Keller",
+          alreadyRead: true,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/31bLXJwHXlL._SX344_BO1,204,203,200_.jpg",
+        },
+        {
+          title: "The Pomodoro Technique",
+          author: "Francesco Cirillo",
+          alreadyRead: false,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/41aA7sS2q6L._SX315_BO1,204,203,200_.jpg",
+        },
+        {
+          title: "Doing Agile Right: Transformation Without Chaos",
+          author: "Darrell Rigby",
+          alreadyRead: true,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/41DaY4WwhAL._SX335_BO1,204,203,200_.jpg",
+        },
+        {
+          title: "Agile Project Management For Dummies",
+          author: " Mark C. Layton",
+          alreadyRead: false,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/51pIjL0KaNL._SX397_BO1,204,203,200_.jpg",
+        },
+        {
+          title: "Agile Scrum Crash Course",
+          author: "Umer W.",
+          alreadyRead: true,
+          source:
+            "https://images-na.ssl-images-amazon.com/images/I/51y7o5K0SxL._SX331_BO1,204,203,200_.jpg",
+        },
+      ];
+
+      let unorderedList = document.createElement("ul");
+      document.getElementsByTagName("main")[0].appendChild(unorderedList);
+      books.forEach((element) => {
+        let { title, author, alreadyRead, source } = element;
+
+        let listItem = document.createElement("li");
+        let image = document.createElement("img");
+        let item1 = document.createElement("span");
+        let item2 = document.createElement("span");
+        let item3 = document.createElement("span");
+
+        image.setAttribute("src", source);
+        if (alreadyRead) {
+          image.setAttribute("style", "filter:grayscale(90%)");
+        }
+
+        item1.textContent = title;
+        item2.textContent = author;
+
+        listItem.appendChild(image);
+        listItem.appendChild(item1);
+        listItem.appendChild(item2);
+        listItem.appendChild(item3);
+        unorderedList.appendChild(listItem);
+      });
+      let deneme = unorderedList.lastElementChild;
+    </script>
+  </body>
+</html>

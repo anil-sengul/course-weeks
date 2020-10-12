@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      div {
+        margin: 0;
+        width: 100px;
+        height: 100px;
+        background-color: darkred;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      document.body.addEventListener("wheel", move);
+      function move() {
+        let div = document.querySelector("div");
+
+        //to change X position
+        var x = -Number(event.deltaX);
+        var x1 = Number(div.style.marginLeft.split("px")[0]);
+        var XnewPos = x + x1;
+        var winWidth = window.innerWidth;
+
+        if (XnewPos < winWidth - 100 && XnewPos > -winWidth + 100) {
+          div.style.marginLeft = `${XnewPos}px`;
+        }
+
+        //to change Y position
+        var y = -Number(event.deltaY);
+        var y1 = Number(div.style.marginTop.split("px")[0]);
+        var YnewPos = y + y1;
+        var winheight = window.innerHeight;
+
+        if (YnewPos < winheight - 100 && YnewPos > -winheight + 100) {
+          div.style.marginTop = `${YnewPos}px`;
+        }
+      }
+    </script>
+  </body>
+</html>
